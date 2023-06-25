@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { Form, Button, Spinner, Container, Card } from "react-bootstrap";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import { firestore } from "../firebase";
 import { globals } from "../resources/globals";
 
 const RequestForm = () => {
@@ -49,7 +47,7 @@ const RequestForm = () => {
         shift: selectedShift,
       }
       let httpConfig = globals.httpConfig(params);
-      const response = await fetch(httpConfig.url);
+      await fetch(httpConfig.url);
 
       setSelectedGuests("");
       setSelectedHost("");

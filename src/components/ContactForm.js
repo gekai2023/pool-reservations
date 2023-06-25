@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Form, Button, Spinner, Container, Card } from "react-bootstrap";
 import { globals } from "../resources/globals";
 
@@ -19,7 +19,7 @@ const ContactForm = () => {
         description: description,
       }
       let httpConfig = globals.httpConfig(params);
-      const response = await fetch(httpConfig.url);
+      await fetch(httpConfig.url);
 
       setName("");
       setPhone("");
