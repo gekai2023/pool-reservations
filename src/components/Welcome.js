@@ -62,7 +62,6 @@ const Welcome = () => {
             <li><a href="/request">בקשה להזמנת אורחים</a></li>
             <li><a href="/reservations">מצבת הבקשות</a></li>
             <li><a href="/contact">צור קשר</a></li>
-            <li><a href="/">תקנון הבריכה המלא</a></li>
           </ul>
         </div>
       </Row>
