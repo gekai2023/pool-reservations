@@ -1,6 +1,6 @@
 export const globals = {
     httpConfig: (params) =>  {
-        let webappUrl = "https://script.google.com/macros/s/AKfycbyyjalbg6_h6L9-fT1CIknozcF5sCIuEI3PPAtw7Iq-QPHOECpTLDvYAVEBh00-t368/exec";
+        let webappUrl = "https://script.google.com/macros/s/AKfycbxtzLPcFkzNghpC5SY8_t6DgNRovNeKlsM8OaSxUfONF2JV3A-iT2fcoLw2RNEqreMZLw/exec";
         let settings = {
             method: 'GET',
             headers: {

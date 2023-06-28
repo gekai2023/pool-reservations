@@ -7,7 +7,7 @@ const Header = () => {
     <Navbar bg="info" expand="lg" className="ml-auto">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-left" >
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center" >
         {
           <Nav variant="underline" className="mr-auto" activeKey={window.location.pathname}>
             <Nav.Link href="/">דף ראשי</Nav.Link>
