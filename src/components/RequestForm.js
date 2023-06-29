@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Form, Button, Spinner, Container, Card } from "react-bootstrap";
 import { globals } from "../resources/globals";
 import Select from "react-select";
+import { Link } from "react-router-dom";
 
 const RequestForm = () => {
   const [selectedHost, setSelectedHost] = useState();
@@ -14,7 +15,7 @@ const RequestForm = () => {
   useEffect(() => {
     const fetchHosts = async () => {
       try {
-        let httpConfig = globals.httpConfig({ action: "getHosts"});
+        let httpConfig = globals.httpConfig({ action: "getHosts" });
         const response = await fetch(httpConfig.url);
         const data = await response.json();
         setHostOptions(data.map((hostObj) => hostObj.name).sort());
@@ -41,9 +42,9 @@ const RequestForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!selectedHost){
+    if (!selectedHost) {
       alert("נא בחרו את שם המארח");
-      return;      
+      return;
     }
     setUpdating(true);
     try {
@@ -52,7 +53,7 @@ const RequestForm = () => {
         host: selectedHost,
         guests: selectedGuests,
         shiftId: selectedShift,
-        shiftName: shiftOptions.filter(option => option.shiftId === selectedShift)[0].shiftName,
+        shiftName: shiftOptions.filter((option) => option.shiftId === selectedShift)[0].shiftName,
       };
       let httpConfig = globals.httpConfig(params);
       await fetch(httpConfig.url);
@@ -81,23 +82,21 @@ const RequestForm = () => {
           <li>משמרת אחה"צ 14:00-18:00</li>
         </ul>
         <Form.Group controlId="host">
-            <Form.Label>מארח</Form.Label>
+          <Form.Label>מארח</Form.Label>
 
-        <Select
-          options={
-            hostOptions.map((name) => ({ value: name, label: name }))
-          }
-          onChange={(e) => {
-            setSelectedHost(e.value);
-            console.log(selectedHost);
-          }}
-          required
-          value={{ value: selectedHost, label: selectedHost }}
-          key={selectedHost}
-          isSearchable/>
-          </Form.Group>
+          <Select
+            options={hostOptions.map((name) => ({ value: name, label: name }))}
+            onChange={(e) => {
+              setSelectedHost(e.value);
+              console.log(selectedHost);
+            }}
+            required
+            value={{ value: selectedHost, label: selectedHost }}
+            key={selectedHost}
+            isSearchable
+          />
+        </Form.Group>
         <Form onSubmit={handleSubmit}>
-
           <Form.Group controlId="guests" className="mt-3">
             <Form.Label>מספר אורחים</Form.Label>
             <Form.Control
@@ -134,15 +133,22 @@ const RequestForm = () => {
             </Form.Control>
           </Form.Group>
 
-          <Button className="mt-3" variant="primary" type="submit" disabled={updating}>
-            {updating ? (
-              <>
-                <Spinner animation="border" size="sm" /> מעדכן...
-              </>
-            ) : (
-              "שלח"
-            )}
-          </Button>
+          {selectedShift === "20230701AM" ? (
+            <span>
+              <strong>שימו לב: </strong>ההרשמה למשמרת זו הסתיימה. לשינויים או בקשות נא ליצור קשר{" "}
+              <Link to="/contact"> כאן</Link>
+            </span>
+          ) : (
+            <Button className="mt-3" variant="primary" type="submit" disabled={updating}>
+              {updating ? (
+                <>
+                  <Spinner animation="border" size="sm" /> מעדכן...
+                </>
+              ) : (
+                "שלח"
+              )}
+            </Button>
+          )}
         </Form>
       </Card>
     </Container>
