@@ -3,6 +3,7 @@ import { Form, Button, Spinner, Container, Card } from "react-bootstrap";
 import { globals } from "../resources/globals";
 import Select from "react-select";
 import { Link } from "react-router-dom";
+const pastShifts = ["20230701AM", "20230701PM"];
 
 const RequestForm = () => {
   const [selectedHost, setSelectedHost] = useState();
@@ -125,7 +126,7 @@ const RequestForm = () => {
               onChange={(e) => setSelectedShift(e.target.value)}
             >
               <option key=""></option>
-              {shiftOptions.map((shift) => (
+              {shiftOptions.filter(shift => !pastShifts.includes(shift.shiftId)).map((shift) => (
                 <option key={shift.shiftId} value={shift.shiftId}>
                   {shift.shiftName}
                 </option>
