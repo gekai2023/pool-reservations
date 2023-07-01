@@ -48,16 +48,13 @@ const Reservations = () => {
       : r1.createMillis - r2.createMillis;
   };
   const optionalLockedShift = () => {
-    return selectedShift !== "20230701AM" ? (
-      <Row></Row>
-    ) : (
-      <Row>
-        <span>
-          <strong>שימו לב: </strong>ההרשמה למשמרת זו הסתיימה. זו הרשימה העדכנית של הזמנות מאושרות.
-          לשינויים או בקשות נא ליצור קשר <Link to="/contact"> כאן</Link>
-        </span>
-      </Row>
-    );
+    return (
+      <div><strong>
+        {
+          selectedShift === "20230701AM"?"הזמנות שאושרו:" :
+          (selectedShift === "20230701PM"? "בשל הסגירה הלא צפויה של הבריכה אחר הצהריים בוטלו ההזמנות הבאות:":"")
+        }
+      </strong></div>);
   };
   const filteredSortedRequests = () => {
     let res =
