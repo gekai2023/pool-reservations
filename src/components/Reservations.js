@@ -51,8 +51,7 @@ const Reservations = () => {
     return (
       <div><strong>
         {
-          selectedShift === "20230701AM"?"הזמנות שאושרו:" :
-          (selectedShift === "20230701PM"? "בשל הסגירה הלא צפויה של הבריכה אחר הצהריים בוטלו ההזמנות הבאות:":"")
+          utils.getLockedShifts().includes(selectedShift)?"רשימה סופית הזמנות שאושרו":"aaa"
         }
       </strong></div>);
   };
@@ -94,7 +93,7 @@ const Reservations = () => {
                     <option key="ALL" value="ALL">
                       כל הבקשות
                     </option>
-                    {utils.filterPastShifts(shiftOptions).map((shift) => (
+                    {utils.filterPastShifts(shiftOptions, false).map((shift) => (
                       <option key={shift.shiftId} value={shift.shiftId}>
                         {shift.shiftName}
                       </option>

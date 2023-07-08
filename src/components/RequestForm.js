@@ -126,7 +126,7 @@ const RequestForm = () => {
               onChange={(e) => setSelectedShift(e.target.value)}
             >
               <option key=""></option>
-              {utils.filterPastShifts(shiftOptions).map((shift) => (
+              {utils.filterPastShifts(shiftOptions, true).map((shift) => (
                 <option key={shift.shiftId} value={shift.shiftId}>
                   {shift.shiftName}
                 </option>
