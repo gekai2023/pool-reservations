@@ -51,7 +51,7 @@ const Reservations = () => {
     return (
       <div><strong>
         {
-          utils.getLockedShifts().includes(selectedShift)?"רשימה סופית הזמנות שאושרו":"aaa"
+          utils.getLockedShifts().includes(selectedShift)?"רשימה סופית הזמנות שאושרו":""
         }
       </strong></div>);
   };
