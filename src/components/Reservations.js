@@ -49,11 +49,9 @@ const Reservations = () => {
   };
   const optionalLockedShift = () => {
     return (
-      <div><strong>
-        {
-          utils.getLockedShifts().includes(selectedShift)?"רשימה סופית הזמנות שאושרו":""
-        }
-      </strong></div>);
+      <div>
+        {shiftOptions.filter(shiftOption => selectedShift === shiftOption.shiftId && shiftOption.status === "Locked").map(shift => <strong>רשימה סופית הזמנות שאושרו</strong>)}
+      </div>);
   };
   const filteredSortedRequests = () => {
     let res =
@@ -93,7 +91,7 @@ const Reservations = () => {
                     <option key="ALL" value="ALL">
                       כל הבקשות
                     </option>
-                    {utils.filterPastShifts(shiftOptions, false).map((shift) => (
+                    {shiftOptions.filter(shift => shift.status !== "Past").map((shift) => (
                       <option key={shift.shiftId} value={shift.shiftId}>
                         {shift.shiftName}
                       </option>
