@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { globals } from "../resources/globals";
 import { Card, Col, Container, Form, Row, Table } from "react-bootstrap";
-import utils from "../resources/utils";
 
 const Reservations = () => {
   const [requests, setRequests] = useState();

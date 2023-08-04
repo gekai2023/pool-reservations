@@ -3,7 +3,6 @@ import { Form, Button, Spinner, Container, Card } from "react-bootstrap";
 import { globals } from "../resources/globals";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-import utils from "../resources/utils"
 
 const RequestForm = () => {
   const [selectedHost, setSelectedHost] = useState();
